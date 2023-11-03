@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 import data from "../db.json";
 import { useDrag, useDrop } from "react-dnd";
@@ -8,6 +8,7 @@ const App = () => {
   const [images, setImages] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [isCheck, setIsCheck] = useState(false);
+  const uploadRef=useRef(null)
 
   const reorderItems = (dragIndex, dropIndex) => {
     const dragItem = images[dragIndex];
@@ -16,16 +17,7 @@ const App = () => {
     updatedItems.splice(dropIndex, 0, dragItem);
     setImages(updatedItems);
   };
-  useEffect(() => {
-    setImages(data);
-  }, []);
-  useEffect(() => {
-    if (selectedItems.length > 0) {
-      setIsCheck(true);
-    } else {
-      setIsCheck(false);
-    }
-  }, [selectedItems]);
+
   const handleItemCheck = (id) => {
     if (selectedItems.length > 0) {
       setIsCheck(true);
@@ -47,6 +39,31 @@ const App = () => {
     setSelectedItems([]);
   };
 
+  const handleImageUpload=(e)=>{
+    const acceptedImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'];
+    const uploadFile= e.target.files[0]
+    if(acceptedImageTypes.includes(uploadFile.type)){
+      const reader =new FileReader()
+      reader.onload=(event)=>{
+        // console.log(event.target.result)
+        setImages([...images,{id:images.length+1,image:event.target.result}])
+      }
+      if(uploadFile){
+        reader.readAsDataURL(uploadFile)
+      }
+    }
+
+  }
+  useEffect(() => {
+    setImages(data);
+  }, []);
+  useEffect(() => {
+    if (selectedItems.length > 0) {
+      setIsCheck(true);
+    } else {
+      setIsCheck(false);
+    }
+  }, [selectedItems]);
   return (
     <section className="container">
       <div className="main-container">
@@ -74,6 +91,10 @@ const App = () => {
               isCheck={selectedItems.includes(item.id)}
             />
           ))}
+          <div className="upload" onClick={()=>uploadRef.current.click()}>
+            Add Item
+          </div>
+          <input style={{display:"none"}} accept="image/*" type="file" ref={uploadRef} onChange={handleImageUpload} />
         </div>
       </div>
     </section>

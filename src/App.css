@@ -129,6 +129,17 @@ img{
   object-fit: cover;
   border-radius: 10px;
 }
+.upload{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: gold;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid gray;
+
+}
 .grid-item:hover .checkbox{
   display: block;
   position: absolute;
@@ -137,14 +148,17 @@ img{
   cursor: pointer;
 }
 .checkbox{
-  display: none;
-}
-.active{
-  display: block;
   position: absolute;
   left: 10px;
   top: 10px;
   cursor: pointer;
+
+}
+.active{
+  display: block;
+}
+.hidden{
+  display: none;
 }
 
 .dargging{

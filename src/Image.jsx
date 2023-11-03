@@ -31,7 +31,7 @@ const Image = ({id,src,index,reorderItems,handleItemCheck,isCheck}) => {
         className={` ${isDragging ? 'dragging' : isDragOver ? 'dragOver' : ''} ${index === 0 ? 'large' : ''} ${isCheck?"checked":'grid-item'}`}
       >
         <img className="img" src={src} alt={index} />
-        <input className={`checkbox ${isCheck?'active':''}`} type="checkbox" value={id} checked={isCheck} onChange={() => handleItemCheck(id)} />
+        <input className={`checkbox ${isCheck?'active':'hidden'}`} type="checkbox" value={id} checked={isCheck} onChange={() => handleItemCheck(id)} />
       </div>
     );
 };
