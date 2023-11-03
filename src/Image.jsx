@@ -28,10 +28,10 @@ const Image = ({id,src,index,reorderItems,handleItemCheck,isCheck}) => {
         <div
         key={index}
         ref={(node) => dragRef(dropRef(node))}
-        className={`grid-item ${isDragging ? 'dragging' : isDragOver ? 'dragOver' : ''} ${index === 0 ? 'large' : ''}`}
+        className={` ${isDragging ? 'dragging' : isDragOver ? 'dragOver' : ''} ${index === 0 ? 'large' : ''} ${isCheck?"checked":'grid-item'}`}
       >
         <img className="img" src={src} alt={index} />
-        <input className='checkbox' type="checkbox" value={id} checked={isCheck} onChange={() => handleItemCheck(id)} />
+        <input className={`checkbox ${isCheck?'active':''}`} type="checkbox" value={id} checked={isCheck} onChange={() => handleItemCheck(id)} />
       </div>
     );
 };

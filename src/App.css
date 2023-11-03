@@ -93,10 +93,30 @@
 }
 .grid-item:hover::before{
   opacity: 0.1;
-  cursor: pointer;
   overflow: hidden;
-
 } 
+.checked{
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+.checked::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(24, 8, 172);
+  opacity: 0.1;
+  overflow: hidden;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
 
 .large {
   grid-row: span 2;
@@ -109,11 +129,24 @@ img{
   object-fit: cover;
   border-radius: 10px;
 }
-.checkbox{
+.grid-item:hover .checkbox{
+  display: block;
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
 }
+.checkbox{
+  display: none;
+}
+.active{
+  display: block;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
 .dargging{
   opacity: 0.5;
 }
