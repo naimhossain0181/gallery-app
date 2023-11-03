@@ -1,38 +1,39 @@
 import React from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 
-const Image = ({id,src,index,reorderItems,handleItemCheck,isCheck}) => {
+const Image = ({ id, src, index, reorderItems, handleItemCheck, isCheck }) => {
     const [{ isDragging }, dragRef] = useDrag({
         type: 'img',
         item: {
-          id:id,
-          index,
+            id: id,
+            index,
         },
         collect: (monitor) => ({
-          isDragging: monitor.isDragging(),
+            isDragging: monitor.isDragging(),
         }),
-      });
+    });
 
-      const [{ isDragOver }, dropRef] = useDrop({
+    const [{ isDragOver }, dropRef] = useDrop({
         accept: 'img',
         collect: (monitor) => ({
-          isDragOver: monitor.isOver(),
+            isDragOver: monitor.isOver(),
+
         }),
         drop: (draggedItem) => {
-          if (draggedItem.index !== index) {
-            reorderItems(draggedItem.index, index);
-          }
+            if (draggedItem.index !== index) {
+                reorderItems(draggedItem.index, index);
+            }
         },
-      });
+    });
     return (
         <div
-        key={index}
-        ref={(node) => dragRef(dropRef(node))}
-        className={` ${isDragging ? 'dragging' : isDragOver ? 'dragOver' : ''} ${index === 0 ? 'large' : ''} ${isCheck?"checked":'grid-item'}`}
-      >
-        <img className="img" src={src} alt={index} />
-        <input className={`checkbox ${isCheck?'active':'hidden'}`} type="checkbox" value={id} checked={isCheck} onChange={() => handleItemCheck(id)} />
-      </div>
+            key={index}
+            ref={(node) => dragRef(dropRef(node))}
+            className={` ${isDragging ? 'dragging' : isDragOver ? 'dragOver' : ''} ${index === 0 ? 'large' : ''} ${isCheck ? "checked" : 'grid-item'}`}
+        >
+            <img className="img" src={src} alt={index} />
+            <input className={`checkbox ${isCheck ? 'active' : 'hidden'}`} type="checkbox" value={id} checked={isCheck} onChange={() => handleItemCheck(id)} />
+        </div>
     );
 };
 

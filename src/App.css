@@ -1,10 +1,9 @@
-*{
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  
 }
-.container{
+.container {
   background: rgb(8, 8, 8);
   width: 100%;
   height: 100vh;
@@ -20,7 +19,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  background:white;
+  background: white;
 }
 .gallery-header {
   position: absolute;
@@ -34,14 +33,14 @@
   border-bottom: 1px solid rgb(163, 163, 163);
   z-index: 100;
 }
-.gallery{
+.gallery {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   padding-left: 20px;
 }
-.select-header{
+.select-header {
   display: flex;
   width: 80%;
   height: 100%;
@@ -52,9 +51,10 @@
 }
 
 .grid-container {
+  position: absolute;
   padding: 60px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   justify-content: space-between;
   gap: 12px;
   background: white;
@@ -62,11 +62,11 @@
   width: 100%;
   height: auto;
   max-height: 100%;
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
-.grid-container::-webkit-scrollbar { 
-  display: none;  /* Safari and Chrome */
+.grid-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 .grid-item {
@@ -91,11 +91,11 @@
   border: 1px solid gray;
   border-radius: 10px;
 }
-.grid-item:hover::before{
-  opacity: 0.1;
+.grid-item:hover::before {
+  opacity: 0.5;
   overflow: hidden;
-} 
-.checked{
+}
+.checked {
   align-items: center;
   border: 1px solid gray;
   border-radius: 10px;
@@ -104,7 +104,7 @@
   height: 100%;
   opacity: 1;
 }
-.checked::before{
+.checked::before {
   content: "";
   position: absolute;
   top: 0;
@@ -121,52 +121,63 @@
 .large {
   grid-row: span 2;
   grid-column: span 2;
-
 }
-img{
+img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
-.upload{
+.upload {
   display: flex;
-  width: 100%;
-  height: 100%;
-  background: gold;
+  width: 150px;
+  height: 150px;
+  background: rgba(182, 178, 178, 0.6);
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  border: 1px solid gray;
-
+  /* border: 1px solid gray; */
+  color: rgb(19, 149, 209);
+  cursor: pointer;
 }
-.grid-item:hover .checkbox{
+.delete {
+  width: 80px;
+  height: 30px;
+  background: rgb(168, 32, 5);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+.delete:hover {
+  color: white;
+  background: rgb(151, 9, 9);
+  cursor: pointer;
+}
+.grid-item:hover .checkbox {
   display: block;
   position: absolute;
   left: 10px;
   top: 10px;
   cursor: pointer;
 }
-.checkbox{
+.checkbox {
   position: absolute;
   left: 10px;
   top: 10px;
   cursor: pointer;
-
 }
-.active{
+.active {
   display: block;
 }
-.hidden{
+.hidden {
   display: none;
 }
 
-.dargging{
-  opacity: 0.5;
+.dargging {
+  opacity: 0.1;
 }
-.dragOver{
+.dragOver {
   opacity: 0.3;
-
-
 }
-
